@@ -12,6 +12,10 @@ orbs:
 
 workflows:
   jobs:
+    - install: 
+        steps:
+          - checkout
+          - node/install-packages
     - cypress/run:
         start: npm run server
         wait-on: 'http://localhost:3000'
