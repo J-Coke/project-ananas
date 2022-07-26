@@ -11,13 +11,14 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 
 workflows:
-  jobs:
-    - install: 
-        steps:
-          - checkout
-          - node/install-packages
-    - cypress/run:
-        start: npm run server
-        wait-on: 'http://localhost:3000'
-        run: cypress run
+  build:
+    jobs:
+    # - install: 
+    #     steps:
+    #       - checkout
+    #       - node/install-packages
+      - cypress/run:
+          start: npm run server
+          wait-on: 'http://localhost:3000'
+          # run: cypress run
   
