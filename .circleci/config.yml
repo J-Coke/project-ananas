@@ -13,9 +13,9 @@ orbs:
 workflows:
   build:
     jobs:
-    
       - cypress/run:
           start: npm run server
           wait-on: 'http://localhost:3000'
-          # run: cypress run
-  
+      - heroku/deploy-via-git:
+          requires:
+            - cypress/run
