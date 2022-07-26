@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "e2e": "start-server-and-test server http://localhost:3000 cypress:run"
   },
   "repository": {
     "type": "git",
@@ -18,5 +22,9 @@
   "homepage": "https://github.com/J-Coke/project-ananas#readme",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "cypress": "^10.3.1",
+    "start-server-and-test": "^1.14.0"
   }
 }
