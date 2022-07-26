@@ -4,45 +4,50 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
-  heroku: circleci/heroku@1.2.6
+  # heroku: circleci/heroku@1.2.6
+  cypress: cypress-io/cypress@2.1.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build_and_test: # this can be any name you choose
-    executor: node/default # use the default executor defined within the orb
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      # - run:
-      #     command: npm run test
-      #     name: Run tests
-      - run:
-          command: npm run build
-          name: Build app
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
-  deploy: # this can be any name you choose
-    executor: heroku/default
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - heroku/deploy-via-git:
-          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
-
+  # build_and_test: # this can be any name you choose
+  #   executor: node/default # use the default executor defined within the orb
+  #   steps:
+  #     - checkout
+  #     - node/install-packages:
+  #         pkg-manager: npm
+  #     # - run:
+  #     #     command: npm run test
+  #     #     name: Run tests
+  #     - run:
+  #         command: npm run build
+  #         name: Build app
+  #     - persist_to_workspace:
+  #         root: ~/project
+  #         paths:
+  #           - .
+  # deploy: # this can be any name you choose
+  #   executor: heroku/default
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/project
+  #     - heroku/deploy-via-git:
+  #         force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+  - cypress/run:
+      start: npm run server
+      wait-on: 'http://localhost:3000'
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build_test_deploy:
-    jobs:
-      - build_and_test
-      - deploy:
-          requires:
-            - build_and_test # only deploy if the build_and_test job has completed
-          filters:
-            branches:
-              only: main # only deploy when on main
+  # build_test_deploy:
+  #   jobs:
+  #     - build_and_test
+  #     - deploy:
+  #         requires:
+  #           - build_and_test # only deploy if the build_and_test job has completed
+  #         filters:
+  #           branches:
+  #             only: main # only deploy when on main
+  jobs:
+    - cypress/run
 
