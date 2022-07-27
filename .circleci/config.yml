@@ -23,4 +23,3 @@ workflows:
       - heroku/deploy-via-git:
           requires:
             - cypress/run
-            - jest/test
