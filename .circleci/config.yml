@@ -16,6 +16,9 @@ workflows:
       - cypress/run:
           start: npm run server
           wait-on: 'http://localhost:3000'
+      - jest/run:
+          start: npm run test
       - heroku/deploy-via-git:
           requires:
             - cypress/run
+            - jest/run
