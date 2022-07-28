@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "devstart": "nodemon app.js & npm run scss",
     "server": "npm start",
     "test": "jest",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "e2e": "start-server-and-test server http://localhost:3000 cypress:run"
+    "e2e": "start-server-and-test server http://localhost:3000 cypress:run",
+    "scss": "sass --watch sass/styles.scss public/stylesheet/styles.css"
   },
   "repository": {
     "type": "git",
@@ -22,11 +24,14 @@
   },
   "homepage": "https://github.com/J-Coke/project-ananas#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "govuk-frontend": "^4.2.0"
   },
   "devDependencies": {
     "cypress": "^10.3.1",
     "jest": "^28.1.3",
+    "nodemon": "^2.0.19",
+    "sass": "^1.54.0",
     "start-server-and-test": "^1.14.0"
   }
 }
