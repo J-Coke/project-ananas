@@ -19,6 +19,10 @@ workflows:
           wait-on: 'http://localhost:3000'
       - jest/test
       - heroku/deploy-via-git:
+          filters:
+            branches:
+              only:
+                - main
           requires:
             - cypress/run
             - jest/test

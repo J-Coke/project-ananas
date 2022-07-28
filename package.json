@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "server": "node app.js",
+    "start": "node app.js",
+    "server": "npm start",
     "test": "jest",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
