@@ -6,6 +6,7 @@ orbs:
   node: circleci/node@5.0.2
   heroku: circleci/heroku@1.2.6
   cypress: cypress-io/cypress@2.1.0
+  jest: blimmer/jest@1.0.0
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -15,7 +16,8 @@ workflows:
     jobs:
       - cypress/run:
           start: npm run server
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
+      - jest/test
       - heroku/deploy-via-git:
           filters:
             branches:
@@ -23,3 +25,4 @@ workflows:
                 - main
           requires:
             - cypress/run
+            - jest/test
