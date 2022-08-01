@@ -33,6 +33,10 @@
 
 Use `npm run devstart` to run server locally. This is so you don't have to restart the server, when a change is made. It will also convert the SASS file into CSS and watch for any changes to styles.scss
 
+## Run Cypress tests locally
+
+Use `npm run e2e`
+
 ## To add a page
 
 1. Use the page template in templates/default-page-template
