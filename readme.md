@@ -37,7 +37,7 @@ Use `npm run devstart` to run server locally. This is so you don't have to resta
 
 Use `npm run e2e`. This will start the server, run the tests and close the server
 
-Use `npm run cypress:run` to run the tests if you already have a server started
+If you already have a server started, use `npm run cypress:run` to run the tests
 
 ## To add a page
 
