@@ -1,6 +1,6 @@
 describe("empty spec", () => {
-  it("passes", () => {
-    cy.visit("http://localhost:3000");
+  it("successfully loads", () => {
+    cy.visit("/");
     cy.contains("GOV.UK");
   });
 });
