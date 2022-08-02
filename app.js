@@ -9,6 +9,10 @@ app.get("/", (req, res) => {
   res.render("index.html");
 });
 
+app.get("/postcode", (req, res) => {
+  res.render("postcode.html");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
