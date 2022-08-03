@@ -120,6 +120,7 @@
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
+        <a href="/" class="govuk-back-link">Back</a>
         <h1 class="govuk-heading-xl">Creating a My Council Account</h1>
         <p class="govuk-body">
           You can use this service to create a personal account which you can
@@ -134,7 +135,9 @@
           council services are able to see a copy of these for any applications
           you make.
         </p>
-        <p class="govuk-body">Documents you can upload on this service:</p>
+        <h2 class="govuk-heading-m">
+          Documents you can upload on this service:
+        </h2>
         <ul class="govuk-list govuk-list--bullet">
           <li>Photo IDs (passport, driver's licence)</li>
           <li>Biometric Residence Permit (BRP)</li>
@@ -144,28 +147,42 @@
           <li>Proof of address</li>
         </ul>
 
-        <div class="govuk-body govuk-button-group">
-          To log in &nbsp;
-
-          <button
-            class="govuk-button govuk-button--secondary"
-            data-module="govuk-button"
-          >
-            Click Here
-          </button>
-        </div>
-        <div class="govuk-body govuk-button-group">
-          To register &nbsp;
-
+        <div class="govuk-button-group">
           <button
             class="govuk-button"
             data-module="govuk-button"
             id="register-btn"
             onclick="location.href='#';"
           >
-            Click Here
+            Register
+          </button>
+
+          <button
+            class="govuk-button govuk-button--secondary"
+            data-module="govuk-button"
+          >
+            Log in
           </button>
         </div>
+
+        <!-- <div class="govuk-body govuk-button-group">
+          <button
+            class="govuk-button govuk-button--secondary"
+            data-module="govuk-button"
+          >
+            Log in
+          </button>
+        </div>
+        <div class="govuk-body govuk-button-group">
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            id="register-btn"
+            onclick="location.href='#';"
+          >
+            Register
+          </button>
+        </div> -->
       </main>
     </div>
 
