@@ -1,7 +1,6 @@
 describe("my council account page", () => {
   it("displays the page title", () => {
     cy.visit("/my-council-account");
-    //cy.contains("Creating a My Council Account");
     cy.get("h1").should("have.text", "Creating a My Council Account");
   });
   it("shows a bullet list", () => {
