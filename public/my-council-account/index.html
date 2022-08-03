@@ -139,8 +139,10 @@
           <li>Marriage/Civil Partnership Certificates</li>
           <li>Proof of address</li>
         </ul>
+
         <div class="govuk-body govuk-button-group">
           To log in &nbsp;
+
           <button
             class="govuk-button govuk-button--secondary"
             data-module="govuk-button"
@@ -151,7 +153,12 @@
         <div class="govuk-body govuk-button-group">
           To register &nbsp;
 
-          <button class="govuk-button" data-module="govuk-button">
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            id="register-btn"
+            onclick="location.href='#';"
+          >
             Click Here
           </button>
         </div>
@@ -196,8 +203,7 @@
         </div>
       </div>
     </footer>
-
-    <script src="/javascripts/gov.js"></script>
+    <script src="../javascripts/gov.js"></script>
     <script>
       window.GOVUKFrontend.initAll();
     </script>
