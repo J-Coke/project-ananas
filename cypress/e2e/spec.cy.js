@@ -11,6 +11,7 @@ describe('landing page', () => {
     cy.contains('My council account')
     cy.contains('Blue badge application')
   })
+
   it('my council account is a clickable link', () => {
     cy.visit('http://localhost:3000')
     cy.contains('My council account').click()
@@ -24,6 +25,7 @@ describe('date of birth', () => {
     cy.contains('What is your date of birth?')
     cy.contains('Month')
   })
+  
   it('Continue button is a clickable link', () => {
     cy.visit('http://localhost:3000/date-of-birth.html')
     cy.contains('Continue').click()
