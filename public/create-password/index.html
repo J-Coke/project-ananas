@@ -121,11 +121,38 @@
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
         <a href="#" class="govuk-back-link">Back</a>
-        <h1 class="govuk-heading-xl">Create a password for your account</h1>
-        <p class="govuk-body-m">
-          Password must contain 8 digits, at least on number and one special
-          character
-        </p>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="password">
+              Create a password for your account
+            </label>
+          </h1>
+          <p class="govuk-body-m">
+            Password must contain 8 digits, at least on number and one special
+            character
+          </p>
+          <input
+            class="govuk-input govuk-input--width-20"
+            id="password"
+            name="password"
+            type="text"
+          />
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="confirm-password"
+            >Confirm password</label
+          >
+          <input
+            class="govuk-input govuk-input--width-20"
+            id="confirm-password"
+            name="confirm-password"
+            type="text"
+          />
+        </div>
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
       </main>
     </div>
 
