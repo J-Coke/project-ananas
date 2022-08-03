@@ -20,9 +20,9 @@ describe("my council account page", () => {
     cy.contains("To register");
     cy.get("button").last().contains("Click Here");
   });
-  //   it("is a clickable button to register an account", () => {
-  //     cy.visit("/my-council-account");
-  //     cy.get("button").last().contains("Click Here").click();
-  //     cy.url().should("eq", "/my-council-account/#");
-  //   });
+  it("is a clickable button to register an account", () => {
+    cy.visit("/my-council-account");
+    cy.get("button").last().contains("Click Here").click();
+    cy.url().should("include", "/#");
+  });
 });
