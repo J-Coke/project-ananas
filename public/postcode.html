@@ -62,6 +62,7 @@
   </header>
   
   <div class="govuk-width-container ">
+    <a href="#" class="govuk-back-link" id="back-button">Back</a>
     <main class="govuk-main-wrapper " id="main-content" role="main">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -72,17 +73,17 @@
         
         <!-- <p class="govuk-body">Please enter your postcode</p> -->
 
-        <div class="govuk-form-group" id="postcode-input">
+        <div class="govuk-form-group" id="postcode-input" data-cy="postcode-input">
           <label class="govuk-heading-m" for="address-postcode">
             Postcode
           </label>
           <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
-          <button class="govuk-button" data-module="govuk-button" id="find-address-button">
+          <button class="govuk-button" data-module="govuk-button" id="find-address-button" data-cy="find-address-button">
             Find address
           </button>
         </div>
         
-        <div class="govuk-form-group no-display" id="address-select">
+        <div class="govuk-form-group no-display" id="address-select" data-cy="address-select">
           <div class="govuk-form-group">
             <h2 class="govuk-heading-m">Postcode</h2>
             <dl class="govuk-summary-list">
@@ -90,8 +91,8 @@
                 SK11 6PY   
               </dt>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
-                  Change<span class="govuk-visually-hidden"> name</span>
+                <a class="govuk-link" href="#" id="change-postcode-button" data-cy="change-postcode-button">
+                  Change<span class="govuk-visually-hidden" > name</span>
                 </a>
               </dd>
             </dl>
@@ -100,16 +101,25 @@
             <label class="govuk-label" for="subject">
               Select an address
             </label>
-            <select class="govuk-select" id="subject" name="subject" aria-describedby="subject-hint">
+            <select class="govuk-select" id="address" name="address" aria-describedby="address-hint">
               <option value="choose" selected>2 addresses found</option>
               <option value="36_BridgeSt_Macclesfield_SK116PY">36 Bridge St, Macclesfield, SK11 6PY</option>
               <option value="38_BridgeSt_Macclesfield_SK116PY">38 Bridge St, Macclesfield, SK11 6PY</option>
             </select>
+            <!-- <p id="address-selection-error" class="govuk-error-message no-display">
+              <span class="govuk-visually-hidden">Error:</span> Please select an address
+            </p> -->
           </div>
-          <p class="govuk-body"><a href="#" class="govuk-link">I can't find my address in the list</a>.</p>
+          <p class="govuk-body"><a href="#" class="govuk-link" id="cannot-find-address" data-cy="cannot-find-address">I can't find my address in the list</a>.</p>
+          <a href="/date-of-birth.html" role="button" draggable="false" class="govuk-button" data-module="govuk-button" data-cy="submit-address-selection" id="submit-address-selection">
+            Continue
+          </a>
+          <!-- <button class="govuk-button" data-module="govuk-button" href="/public/date-of-birth.html">
+            Continue
+          </button> -->
         </div>
 
-        <div class="govuk-form-group no-display" id="address-manual-entry">
+        <div class="govuk-form-group no-display" id="address-manual-entry" data-cy="address-manual-entry">
           <div class="govuk-form-group">
             <label class="govuk-label" for="address-line-1">
               Address line 1
@@ -136,9 +146,18 @@
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
           </div>
-          <button class="govuk-button" data-module="govuk-button">
-            Submit address
-          </button>
+
+          <div class="govuk-form-group" id="postcode-input">
+            <label class="govuk-label" for="address-postcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+           
+          </div>
+
+          <a href="/date-of-birth.html" role="button" draggable="false" class="govuk-button" data-module="govuk-button" data-cy="submit-manual-address">
+            Continue
+          </a>
         </div>
       
       </fieldset>
@@ -165,7 +184,7 @@
     </div>
   </footer>
 
-  <script src="/govuk-frontend/all.js"></script>
+  <script src="/javascripts/gov.js"></script>
   <script src="/javascripts/postcode.js"></script>
   <script>
     window.GOVUKFrontend.initAll()
