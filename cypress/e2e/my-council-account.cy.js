@@ -3,6 +3,11 @@ describe("my council account page", () => {
     cy.visit("/my-council-account");
     cy.get("h1").should("have.text", "Creating a My Council Account");
   });
+  it("can go back to the previous page", () => {
+    cy.visit("/my-council-account");
+    cy.get("a").contains("Back").click();
+    cy.url().should("eq", "http://localhost:3000/");
+  });
   it("shows a bullet list", () => {
     cy.visit("/my-council-account");
     cy.get("li")
@@ -11,17 +16,15 @@ describe("my council account page", () => {
   });
   it("shows the login button", () => {
     cy.visit("/my-council-account");
-    cy.contains("To log in");
-    cy.get("button").first().contains("Click Here");
+    cy.get("button").contains("Log in");
   });
   it("shows the register button", () => {
     cy.visit("/my-council-account");
-    cy.contains("To register");
-    cy.get("button").last().contains("Click Here");
+    cy.get("button").contains("Register");
   });
   it("is a clickable button to register an account", () => {
     cy.visit("/my-council-account");
-    cy.get("button").last().contains("Click Here").click();
+    cy.get("button").contains("Register").click();
     cy.url().should("include", "/#");
   });
 });
