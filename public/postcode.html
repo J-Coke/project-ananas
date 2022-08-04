@@ -62,7 +62,10 @@
   </header>
   
   <div class="govuk-width-container ">
-    <a href="#" class="govuk-back-link" id="back-button">Back</a>
+    <a href="/name.html" class="govuk-back-link" id="postcode-input-back-button" data-cy="postcode-input-back-button">Back</a>
+    <a href="#" class="govuk-back-link no-display" id="select-address-back-button" data-cy="select-address-back-button">Back</a>
+    <a href="#" class="govuk-back-link no-display" id="manual-address-back-button" data-cy="manual-address-back-button">Back</a>
+
     <main class="govuk-main-wrapper " id="main-content" role="main">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -70,9 +73,6 @@
             What is your home address?
           </h1>
         </legend>
-        
-        <!-- <p class="govuk-body">Please enter your postcode</p> -->
-
         <div class="govuk-form-group" id="postcode-input" data-cy="postcode-input">
           <label class="govuk-heading-m" for="address-postcode">
             Postcode
@@ -106,17 +106,11 @@
               <option value="36_BridgeSt_Macclesfield_SK116PY">36 Bridge St, Macclesfield, SK11 6PY</option>
               <option value="38_BridgeSt_Macclesfield_SK116PY">38 Bridge St, Macclesfield, SK11 6PY</option>
             </select>
-            <!-- <p id="address-selection-error" class="govuk-error-message no-display">
-              <span class="govuk-visually-hidden">Error:</span> Please select an address
-            </p> -->
           </div>
           <p class="govuk-body"><a href="#" class="govuk-link" id="cannot-find-address" data-cy="cannot-find-address">I can't find my address in the list</a>.</p>
           <a href="/date-of-birth.html" role="button" draggable="false" class="govuk-button" data-module="govuk-button" data-cy="submit-address-selection" id="submit-address-selection">
             Continue
           </a>
-          <!-- <button class="govuk-button" data-module="govuk-button" href="/public/date-of-birth.html">
-            Continue
-          </button> -->
         </div>
 
         <div class="govuk-form-group no-display" id="address-manual-entry" data-cy="address-manual-entry">

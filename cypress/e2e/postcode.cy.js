@@ -46,4 +46,26 @@ describe('address page', () => {
         cy.get('[data-cy="submit-manual-address"]').click()
         cy.url().should('include', '/date-of-birth.html')
     })
+    it('back button goes to name page when clicked on initial tab', () => {
+        cy.visit('http://localhost:3000/postcode.html')
+        cy.get('[data-cy="postcode-input-back-button"]').click()
+        cy.url().should('include', '/name.html')
+    })
+    it('back button goes to postcode lookup when clicked on address select tab', () => {
+        cy.visit('http://localhost:3000/postcode.html')
+        cy.get('[data-cy="find-address-button"]').click()
+        cy.get('[data-cy="select-address-back-button"]').click()
+        cy.get('[data-cy="postcode-input"]').should("not.have.class", "no-display");
+        cy.get('[data-cy="address-select"]').should("have.class", "no-display");
+        cy.get('[data-cy="address-manual-entry"]').should("have.class", "no-display");
+    })
+    it('back button goes to select address tab when clicked on manual address entry tab', () => {
+        cy.visit('http://localhost:3000/postcode.html')
+        cy.get('[data-cy="find-address-button"]').click()
+        cy.get('[data-cy="cannot-find-address"]').click()
+        cy.get('[data-cy="manual-address-back-button"]').click()
+        cy.get('[data-cy="postcode-input"]').should("have.class", "no-display");
+        cy.get('[data-cy="address-select"]').should("not.have.class", "no-display");
+        cy.get('[data-cy="address-manual-entry"]').should("have.class", "no-display");
+    })
   })
