@@ -120,8 +120,10 @@
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
-        <a href="/" class="govuk-back-link">Back</a>
-        <h1 class="govuk-heading-xl">Creating a My Council Account</h1>
+        <a href="/" class="govuk-back-link" data-cy="back-link">Back</a>
+        <h1 class="govuk-heading-xl" data-cy="section-heading-h1">
+          Creating a My Council Account
+        </h1>
         <p class="govuk-body">
           You can use this service to create a personal account which you can
           then choose to share with council departments.
@@ -138,7 +140,7 @@
         <h2 class="govuk-heading-m">
           Documents you can upload on this service:
         </h2>
-        <ul class="govuk-list govuk-list--bullet">
+        <ul class="govuk-list govuk-list--bullet" data-cy="bullet-list">
           <li>Photo IDs (passport, driver's licence)</li>
           <li>Biometric Residence Permit (BRP)</li>
           <li>Birth Certificates</li>
@@ -152,6 +154,7 @@
             class="govuk-button"
             data-module="govuk-button"
             id="register-btn"
+            data-cy="register-btn"
             onclick="location.href='#';"
           >
             Register
@@ -160,6 +163,7 @@
           <button
             class="govuk-button govuk-button--secondary"
             data-module="govuk-button"
+            data-cy="login-btn"
           >
             Log in
           </button>
