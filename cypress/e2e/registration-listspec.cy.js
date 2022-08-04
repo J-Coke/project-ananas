@@ -26,7 +26,7 @@ describe('continue button', () => {
   it('is a clickable button to continue to registration', () => {
     cy
     .visit('http://localhost:3000/registration-list.html')
-    .get("button").contains("Continue")
-    .url().should("include", "/#")
+    .get("button").contains("Continue").click()
+    .url().should("include", "/name-page/index.html")
   })
 })
