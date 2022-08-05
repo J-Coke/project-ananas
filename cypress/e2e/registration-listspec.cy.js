@@ -27,6 +27,6 @@ describe('continue button', () => {
     cy
     .visit('http://localhost:3000/registration-list.html')
     .get("button").contains("Continue").click()
-    .url().should("include", "/name-page/index.html")
+    .url().should("include", "/name-page")
   })
 })
