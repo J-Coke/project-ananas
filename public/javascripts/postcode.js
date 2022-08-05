@@ -14,7 +14,6 @@ const cannotFindAddressButton = document.querySelector("#cannot-find-address");
 
 
 function changeTab(tabToHide, tabToShow, backButtonToHide, backButtonToShow) {
-    console.log("1")
     tabToHide.classList.add("no-display");
     tabToShow.classList.remove("no-display");
     backButtonToHide.classList.add("no-display");
@@ -26,26 +25,21 @@ function backToPostcodeInput() {
   }
 
 findAddressButton.addEventListener("click", function () {
-    console.log("3")
     changeTab(postcodeInput, selectAddress, postcodeInputBackButton, selectAddressBackButton)
 });
 
 changeButton.addEventListener("click", function () {
-    console.log("4")
     backToPostcodeInput()
 });
 
 cannotFindAddressButton.addEventListener("click", function () {
-    console.log("5")
     changeTab(selectAddress, manualAddressEntry, selectAddressBackButton, manualAddressBackButton);
 });
 
 selectAddressBackButton.addEventListener("click", function () {
-    console.log("6")
     backToPostcodeInput()
 });
 
 manualAddressBackButton.addEventListener("click", function () {
-    console.log("6")
     changeTab(manualAddressEntry, selectAddress, manualAddressBackButton, selectAddressBackButton);
 });
