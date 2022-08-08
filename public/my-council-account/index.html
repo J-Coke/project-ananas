@@ -79,7 +79,7 @@
     <header class="govuk-header" role="banner" data-module="govuk-header">
       <div class="govuk-header__container govuk-width-container">
         <div class="govuk-header__logo">
-          <a href="#" class="govuk-header__link govuk-header__link--homepage">
+          <a href="/" class="govuk-header__link govuk-header__link--homepage">
             <span class="govuk-header__logotype">
               <!--[if gt IE 8]><!-->
               <svg
@@ -110,49 +110,63 @@
             </span>
           </a>
         </div>
-        <span> Birmingham City Council </span>
+        <div class="govuk-header__content">
+          <a href="#" class="govuk-header__link govuk-header__service-name">
+            Birmingham City Council
+          </a>
+        </div>
       </div>
     </header>
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
-        <h1 class="govuk-heading-xl">Council Home screen</h1>
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-columnn-full"></div>
-          <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m">
-              <a href="#" class="govuk-link">Council Tax</a>
-            </h2>
-            <!-- <p class="govuk-body">
-            Council Tax is a tax on council property.
-          </p> -->
-            <h2 class="govuk-heading-m">
-              <a href="#" class="govuk-link">Benefits</a>
-            </h2>
-            <!-- <p class="govuk-body">
-            Housing Benefit can help you pay your rent if you're unemployed, on a low income or claiming benefits. It's being replaced by Universal Credit.
-          </p> -->
-            <h2 class="govuk-heading-m">
-              <a href="#" class="govuk-link">Blue badge application</a>
-            </h2>
-            <!-- <p class="govuk-body">
-            Blue Badges help people with disabilities or health conditions park closer to their destination.
-          </p> -->
-          </div>
-          <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m">
-              <a href="/my-council-account" class="govuk-link"
-                >My council account</a
-              >
-            </h2>
-            <!-- <p class="govuk-body">
-            Log in to your account or create a new one.</p> -->
-            <h2 class="govuk-heading-m">
-              <a href="#" class="govuk-link">Parking permit</a>
-            </h2>
-            <!-- <p class="govuk-body">
-            A permit will enable the holder to park in any vacant on-street resident parking permit holder's space, or if applicable, shared use space within the permits' zone of issue, between the hours displayed on signs. These are found at the entry points to the zone, or adjacent to some parking bays.</p> -->
-          </div>
+        <a href="/" class="govuk-back-link" data-cy="back-link">Back</a>
+        <h1 class="govuk-heading-xl" data-cy="section-heading-h1">
+          Creating a My Council Account
+        </h1>
+        <p class="govuk-body">
+          You can use this service to create a personal account which you can
+          then choose to share with council departments.
+        </p>
+        <p class="govuk-body">
+          With an account, you can store and share various personal ID
+          documents.
+        </p>
+        <p class="govuk-body">
+          You will only have to upload documents once and you can choose which
+          council services are able to see a copy of these for any applications
+          you make.
+        </p>
+        <h2 class="govuk-heading-m">
+          Documents you can upload on this service:
+        </h2>
+        <ul class="govuk-list govuk-list--bullet" data-cy="bullet-list">
+          <li>Photo IDs (passport, driver's licence)</li>
+          <li>Biometric Residence Permit (BRP)</li>
+          <li>Birth Certificates</li>
+          <li>Adoption Certificates</li>
+          <li>Marriage/Civil Partnership Certificates</li>
+          <li>Proof of address</li>
+        </ul>
+
+        <div class="govuk-button-group">
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            id="register-btn"
+            data-cy="register-btn"
+            onclick="location.href='#';"
+          >
+            Register
+          </button>
+
+          <button
+            class="govuk-button govuk-button--secondary"
+            data-module="govuk-button"
+            data-cy="login-btn"
+          >
+            Log in
+          </button>
         </div>
       </main>
     </div>
@@ -195,8 +209,7 @@
         </div>
       </div>
     </footer>
-
-    <script src="/javascripts/gov.js"></script>
+    <script src="../javascripts/gov.js"></script>
     <script>
       window.GOVUKFrontend.initAll();
     </script>
