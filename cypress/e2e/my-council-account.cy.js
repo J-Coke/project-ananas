@@ -30,6 +30,6 @@ describe("my council account page", () => {
 
   it("is a clickable button to register an account", () => {
     cy.get('[data-cy="register-btn"]').click();
-    cy.url().should("include", "/#");
+    cy.url().should("eq", "http://localhost:3000/registration-list/");
   });
 });
