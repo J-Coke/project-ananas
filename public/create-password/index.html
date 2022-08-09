@@ -121,7 +121,9 @@
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
-        <a href="#" class="govuk-back-link" data-cy="back-link">Back</a>
+        <a href="/email-address" class="govuk-back-link" data-cy="back-link"
+          >Back</a
+        >
 
         <form
           action="/create-password"
@@ -138,68 +140,33 @@
                   Create a password for your account
                 </label>
               </h1>
-              <p class="govuk-body-m">
+              <div id="password-name-hint" class="govuk-hint">
                 Password must contain 8 digits, at least one number and one
                 special character
-              </p>
+              </div>
+              <span id="error"></span>
               <input
-                class="govuk-input govuk-input--width-20"
+                class="govuk-input govuk-input--width-20 password"
                 id="password"
                 name="password"
-                type="text"
+                type="password"
                 data-cy="password-input"
               />
-            </div>
-            <div class="govuk-form-group">
+              <br />
+              <br />
               <label class="govuk-label" for="confirm-password"
                 >Confirm password</label
               >
               <input
-                class="govuk-input govuk-input--width-20"
+                class="govuk-input govuk-input--width-20 confirm-password"
                 id="confirm-password"
                 name="confirm-password"
-                type="text"
+                type="password"
                 data-cy="confirm-password-input"
               />
             </div>
           </div>
 
-          <!-- <div id="length-error-password-fields" class="no-display">
-            <div class="govuk-form-group govuk-form-group--error">
-              <h1 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--l" for="event-name">
-                  Create a password for your account
-                </label>
-              </h1>
-              <div id="event-name-hint" class="govuk-hint">
-                Password must contain 8 digits, at least one number and one
-                special character
-              </div>
-              <p id="event-name-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a
-                password with a minimum of 8 characters
-              </p>
-              <input
-                class="govuk-input govuk-input--width-20 govuk-input--error"
-                id="event-name"
-                name="event-name"
-                type="text"
-                data-cy="length-error-password-input"
-                aria-describedby="event-name-hint event-name-error"
-              />
-              <br /><br />
-              <label class="govuk-label" for="confirm-password"
-                >Confirm password</label
-              >
-              <input
-                class="govuk-input govuk-input--width-20"
-                id="confirm-password"
-                name="confirm-password"
-                type="text"
-                data-cy="length-error-confirm-password-input"
-              />
-            </div>
-          </div> -->
           <button
             class="govuk-button"
             data-module="govuk-button"

@@ -11,7 +11,7 @@ describe("create password page", () => {
 
   it("can go back to the previous page", () => {
     cy.get('[data-cy="back-link"]').click();
-    cy.url().should("eq", "http://localhost:3000/create-password/#");
+    cy.url().should("eq", "http://localhost:3000/email-address");
   });
 
   it("shows the password length requirements", () => {
@@ -42,10 +42,25 @@ describe("create password page", () => {
     cy.get('[data-cy="password-input"]').type("pass");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
     cy.contains("Enter a password with a minimum of 8 characters");
-    cy.get('[data-cy="event-name-error"]').should(
+    cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
       "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.attr",
+      "aria-describedby",
+      "password-hint password-error"
     );
   });
 
@@ -55,10 +70,25 @@ describe("create password page", () => {
     cy.contains(
       "Enter a password with at least one number and one special character"
     );
-    cy.get('[data-cy="event-name-error"]').should(
+    cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
       "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.attr",
+      "aria-describedby",
+      "password-hint password-error"
     );
   });
 
@@ -68,10 +98,25 @@ describe("create password page", () => {
     cy.contains(
       "Enter a password with at least one number and one special character"
     );
-    cy.get('[data-cy="event-name-error"]').should(
+    cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
       "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.attr",
+      "aria-describedby",
+      "password-hint password-error"
     );
   });
 
@@ -81,10 +126,25 @@ describe("create password page", () => {
     cy.contains(
       "Enter a password with at least one number and one special character"
     );
-    cy.get('[data-cy="event-name-error"]').should(
+    cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
       "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.attr",
+      "aria-describedby",
+      "password-hint password-error"
     );
   });
 
@@ -93,40 +153,32 @@ describe("create password page", () => {
     cy.get('[data-cy="confirm-password-input"]').type("Type!t2tt");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
     cy.contains("Both passwords should match");
-    cy.get('[data-cy="event-name-error"]').should(
+    cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
       "rgb(212, 53, 28)"
     );
+    cy.get('[data-cy="password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-input"]').should(
+      "have.attr",
+      "aria-describedby",
+      "password-hint password-error"
+    );
   });
 
-  // it("goes to the next page when the password matches the requirements", () => {
-  //   cy.get('[data-cy="password-input"]').type("Type!1day");
-  //   cy.get('[data-cy="confirm-password-input"]').type("Type!1day");
-  //   cy.get('[data-cy="continue-button"]').contains("Continue").click();
-  //   cy.url().should("eq", "http://localhost:3000/create-password/#");
-  // });
+  it("goes to the next page when the password matches requirements", () => {
+    cy.get('[data-cy="password-input"]').type("Type!1day");
+    cy.get('[data-cy="confirm-password-input"]').type("Type!1day");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.url().should("eq", "http://localhost:3000/create-password/#");
+  });
 });
-
-//tests to write
-
-//Validate it matches requirement
-// order of validation
-//length of password
-//type of characters required
-// passwords match
-//requirement: 8 digits, at least one number and one special character
-
-//hide both passwords
-//both values match
-//error if doesn't match
-//continue button and it goes to next page
-
-//Full test order
-// go to page
-// type password
-// validate password
-// show error if not valid
-// confirm password
-// show error if passwords don't match
-// click continue and be taken to next page

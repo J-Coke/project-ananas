@@ -1,149 +1,61 @@
 const continueEvent = document.querySelector("#continue-button");
 const passwordFields = document.querySelector("#password-fields");
-// const lengthErrorPasswordFields = document.querySelector(
-//   "#length-error-password-fields"
-// );
+const formGroup = document.querySelector(".govuk-form-group");
+const passwordInput = document.querySelector("#password");
+const confirmPasswordInput = document.querySelector("#confirm-password");
+const errorTextSection = document.querySelector("#error");
 
 continueEvent.addEventListener("click", checkPassword);
 
 let passwordMinimumLength = 8;
 let passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/;
 
-// console.log(passwordInput);
+function addErrorClasses(formGroup, passwordInput, confirmPasswordInput) {
+  formGroup.classList.add("govuk-form-group--error");
+  passwordInput.classList.add("govuk-input--error");
+  confirmPasswordInput.classList.add("govuk-input--error");
+}
 
-// function showPasswordLengthError(password) {
-//   if (password.length < passwordMinimumLength) {
-//     console.log("nope");
-//   } else {
-//     console.log("ok");
-//   }
-// }
+function addAriaAttribute(passwordInput, confirmPasswordInput) {
+  passwordInput.setAttribute(
+    "aria-describedby",
+    "password-hint password-error"
+  );
+  confirmPasswordInput.setAttribute(
+    "aria-describedby",
+    "password-hint password-error"
+  );
+}
 
-// function removeClass(classToHide) {
-//   classToHide.classList.remove("no-display");
-// }
+function showError(errorType) {
+  addErrorClasses(formGroup, passwordInput, confirmPasswordInput);
+  addAriaAttribute(passwordInput, confirmPasswordInput);
 
-// function addClass(classToAdd) {
-//   classToAdd.classList.add("no-display");
-// }
+  if (errorType === "length") {
+    errorMessage = "Enter a password with a minimum of 8 characters";
+  } else if (errorType === "characters") {
+    errorMessage =
+      "Enter a password with at least one number and one special character";
+  } else if (errorType === "unmatched") {
+    errorMessage = "Both passwords should match";
+  } else {
+    return;
+  }
+
+  errorTextSection.outerHTML = `<p id="password-error" class="govuk-error-message" data-cy="password-error">
+    <span class="govuk-visually-hidden">Error:</span> ${errorMessage}
+    </p>`;
+}
 
 function checkPassword(event) {
   event.preventDefault();
-  let passwordInput = document.querySelector("#password");
-  let confirmPasswordInput = document.querySelector("#confirm-password");
-  console.log(passwordInput.value.length);
   if (passwordInput.value.length < passwordMinimumLength) {
-    passwordFields.innerHTML = `<div id="password-fields">
-        <div class="govuk-form-group govuk-form-group--error">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="event-name">
-              Create a password for your account
-            </label>
-          </h1>
-          <div id="event-name-hint" class="govuk-hint">
-            Password must contain 8 digits, at least one number and one special
-            character
-          </div>
-          <p id="event-name-error" class="govuk-error-message" data-cy="event-name-error">
-            <span class="govuk-visually-hidden" >Error:</span> Enter a password
-            with a minimum of 8 characters
-          </p>
-          <input
-            class="govuk-input govuk-input--width-20 govuk-input--error"
-            id="event-name"
-            name="event-name"
-            type="text"
-            data-cy="length-error-password-input"
-            aria-describedby="event-name-hint event-name-error"
-          />
-          <br />
-          <br />
-          <label class="govuk-label" for="confirm-password">
-            Confirm password
-          </label>
-          <input
-            class="govuk-input govuk-input--width-20"
-            id="confirm-password"
-            name="confirm-password"
-            type="text"
-            data-cy="length-error-confirm-password-input"
-          />
-        </div>
-      </div>`;
+    showError("length");
   } else if (!passwordInput.value.match(passwordRegex)) {
-    passwordFields.innerHTML = `<div id="password-fields">
-        <div class="govuk-form-group govuk-form-group--error">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="event-name">
-              Create a password for your account
-            </label>
-          </h1>
-          <div id="event-name-hint" class="govuk-hint">
-            Password must contain 8 digits, at least one number and one special
-            character
-          </div>
-          <p id="event-name-error" class="govuk-error-message" data-cy="event-name-error">
-            <span class="govuk-visually-hidden" >Error:</span> Enter a password with
-            at least one number and one special character
-          </p>
-          <input
-            class="govuk-input govuk-input--width-20 govuk-input--error"
-            id="event-name"
-            name="event-name"
-            type="text"
-            data-cy="length-error-password-input"
-            aria-describedby="event-name-hint event-name-error"
-          />
-          <br />
-          <br />
-          <label class="govuk-label" for="confirm-password">
-            Confirm password
-          </label>
-          <input
-            class="govuk-input govuk-input--width-20"
-            id="confirm-password"
-            name="confirm-password"
-            type="text"
-            data-cy="length-error-confirm-password-input"
-          />
-        </div>
-      </div>`;
+    showError("characters");
   } else if (passwordInput.value !== confirmPasswordInput.value) {
-    passwordFields.innerHTML = `<div id="password-fields">
-        <div class="govuk-form-group govuk-form-group--error">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="event-name">
-              Create a password for your account
-            </label>
-          </h1>
-          <div id="event-name-hint" class="govuk-hint">
-            Password must contain 8 digits, at least one number and one special
-            character
-          </div>
-          <p id="event-name-error" class="govuk-error-message" data-cy="event-name-error">
-            <span class="govuk-visually-hidden" >Error:</span> Both passwords should match
-          </p>
-          <input
-            class="govuk-input govuk-input--width-20 govuk-input--error"
-            id="event-name"
-            name="event-name"
-            type="text"
-            data-cy="length-error-password-input"
-            aria-describedby="event-name-hint event-name-error"
-          />
-          <br />
-          <br />
-          <label class="govuk-label" for="confirm-password">
-            Confirm password
-          </label>
-          <input
-            class="govuk-input govuk-input--width-20"
-            id="confirm-password"
-            name="confirm-password"
-            type="text"
-            data-cy="length-error-confirm-password-input"
-          />
-        </div>
-      </div>`;
+    showError("unmatched");
+  } else {
+    location.href = "#";
   }
 }
