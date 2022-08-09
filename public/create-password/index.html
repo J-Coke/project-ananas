@@ -45,9 +45,10 @@
     />
 
     <!--[if !IE 8]><!-->
-    <link href="/govuk-frontend/govuk/all.css" rel="stylesheet" />
+    <!-- <link href="/govuk-frontend/govuk/all.css" rel="stylesheet" /> -->
+    <link href="../stylesheet/styles.css" rel="stylesheet" />
     <!--<![endif]-->
-    <link href="/stylesheet/styles.css" rel="stylesheet" />
+
     <!--[if IE 8]>
       <link href="/govuk-frontend/all-ie8.css" rel="stylesheet" />
     <![endif]-->
@@ -120,39 +121,95 @@
 
     <div class="govuk-width-container">
       <main class="govuk-main-wrapper" id="main-content" role="main">
-        <a href="#" class="govuk-back-link">Back</a>
+        <a href="#" class="govuk-back-link" data-cy="back-link">Back</a>
 
-        <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l" for="password">
-              Create a password for your account
-            </label>
-          </h1>
-          <p class="govuk-body-m">
-            Password must contain 8 digits, at least on number and one special
-            character
-          </p>
-          <input
-            class="govuk-input govuk-input--width-20"
-            id="password"
-            name="password"
-            type="text"
-          />
-        </div>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="confirm-password"
-            >Confirm password</label
+        <form
+          action="/create-password"
+          method="POST"
+          autocomplete="off"
+          novalidate="true"
+          spellcheck="false"
+          id="account-password"
+        >
+          <div id="password-fields">
+            <div class="govuk-form-group">
+              <h1 class="govuk-label-wrapper" data-cy="section-heading-h1">
+                <label class="govuk-label govuk-label--l" for="password">
+                  Create a password for your account
+                </label>
+              </h1>
+              <p class="govuk-body-m">
+                Password must contain 8 digits, at least one number and one
+                special character
+              </p>
+              <input
+                class="govuk-input govuk-input--width-20"
+                id="password"
+                name="password"
+                type="text"
+                data-cy="password-input"
+              />
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="confirm-password"
+                >Confirm password</label
+              >
+              <input
+                class="govuk-input govuk-input--width-20"
+                id="confirm-password"
+                name="confirm-password"
+                type="text"
+                data-cy="confirm-password-input"
+              />
+            </div>
+          </div>
+
+          <!-- <div id="length-error-password-fields" class="no-display">
+            <div class="govuk-form-group govuk-form-group--error">
+              <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="event-name">
+                  Create a password for your account
+                </label>
+              </h1>
+              <div id="event-name-hint" class="govuk-hint">
+                Password must contain 8 digits, at least one number and one
+                special character
+              </div>
+              <p id="event-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a
+                password with a minimum of 8 characters
+              </p>
+              <input
+                class="govuk-input govuk-input--width-20 govuk-input--error"
+                id="event-name"
+                name="event-name"
+                type="text"
+                data-cy="length-error-password-input"
+                aria-describedby="event-name-hint event-name-error"
+              />
+              <br /><br />
+              <label class="govuk-label" for="confirm-password"
+                >Confirm password</label
+              >
+              <input
+                class="govuk-input govuk-input--width-20"
+                id="confirm-password"
+                name="confirm-password"
+                type="text"
+                data-cy="length-error-confirm-password-input"
+              />
+            </div>
+          </div> -->
+          <button
+            class="govuk-button"
+            data-module="govuk-button"
+            data-cy="continue-button"
+            id="continue-button"
+            type="button"
           >
-          <input
-            class="govuk-input govuk-input--width-20"
-            id="confirm-password"
-            name="confirm-password"
-            type="text"
-          />
-        </div>
-        <button class="govuk-button" data-module="govuk-button">
-          Continue
-        </button>
+            Continue
+          </button>
+        </form>
       </main>
     </div>
 
@@ -194,8 +251,8 @@
         </div>
       </div>
     </footer>
-
-    <script src="/javascripts/gov.js"></script>
+    <script src="../javascripts/create-password.js"></script>
+    <script src="../javascripts/gov.js"></script>
     <script>
       window.GOVUKFrontend.initAll();
     </script>
