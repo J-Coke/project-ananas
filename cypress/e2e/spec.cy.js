@@ -31,4 +31,10 @@ describe("date of birth", () => {
     cy.contains("Continue").click();
     cy.url().should("include", "/email-address.html");
   });
+  
+  it("Back link is a clickable link and goes to correct destination", () => {
+    cy.visit("http://localhost:3000/date-of-birth");
+    cy.contains("Back").click();
+    cy.url().should("equals", "http://localhost:3000/address/");
+  });
 });
