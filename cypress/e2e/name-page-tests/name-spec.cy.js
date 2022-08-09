@@ -77,7 +77,7 @@ describe("name page", () => {
 
     it("links to the right page", () => {
       cy.get("@button").click();
-      cy.url().should("include", "#");
+      cy.url().should("include", "/address");
     });
   });
 });
