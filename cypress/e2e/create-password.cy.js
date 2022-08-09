@@ -87,13 +87,24 @@ describe("create password page", () => {
       "rgb(212, 53, 28)"
     );
   });
-  // it("shows an error when both passwords don't match", () => {
+
+  it("shows an error when both passwords don't match", () => {
+    cy.get('[data-cy="password-input"]').type("Type!1day");
+    cy.get('[data-cy="confirm-password-input"]').type("Type!t2tt");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.contains("Both passwords should match");
+    cy.get('[data-cy="event-name-error"]').should(
+      "have.css",
+      "color",
+      "rgb(212, 53, 28)"
+    );
+  });
+
+  // it("goes to the next page when the password matches the requirements", () => {
   //   cy.get('[data-cy="password-input"]').type("Type!1day");
-  //   cy.get('[data-cy="confirm-password-input"]').type("Type!tttt");
+  //   cy.get('[data-cy="confirm-password-input"]').type("Type!1day");
   //   cy.get('[data-cy="continue-button"]').contains("Continue").click();
-  //   cy.get('[data-cy="no-match-error"]').contains(
-  //     "Both passwords should match"
-  //   );
+  //   cy.url().should("eq", "http://localhost:3000/create-password/#");
   // });
 });
 
