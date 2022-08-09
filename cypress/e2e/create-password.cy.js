@@ -49,18 +49,44 @@ describe("create password page", () => {
     );
   });
 
-  // it("shows error if password doesn't contain at least one number and special character", () => {
-  //   cy.get('[data-cy="password-input"]').type("password");
-  //   cy.get('[data-cy="continue-button"]').contains("Continue").click();
-  //   cy.contains(
-  //     "Enter a password with at least one number and one special character"
-  //   );
-  //   cy.get('[data-cy="event-name-error"]').should(
-  //     "have.css",
-  //     "color",
-  //     "rgb(212, 53, 28)"
-  //   );
-  // });
+  it("shows error if password doesn't contain at least one number and special character", () => {
+    cy.get('[data-cy="password-input"]').type("password");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="event-name-error"]').should(
+      "have.css",
+      "color",
+      "rgb(212, 53, 28)"
+    );
+  });
+
+  it("shows error if password doesn't contain at least one number", () => {
+    cy.get('[data-cy="password-input"]').type("password@");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="event-name-error"]').should(
+      "have.css",
+      "color",
+      "rgb(212, 53, 28)"
+    );
+  });
+
+  it("shows error if password doesn't contain at least one special character", () => {
+    cy.get('[data-cy="password-input"]').type("password1");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="event-name-error"]').should(
+      "have.css",
+      "color",
+      "rgb(212, 53, 28)"
+    );
+  });
   // it("shows an error when both passwords don't match", () => {
   //   cy.get('[data-cy="password-input"]').type("Type!1day");
   //   cy.get('[data-cy="confirm-password-input"]').type("Type!tttt");
