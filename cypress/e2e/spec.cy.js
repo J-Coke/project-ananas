@@ -21,13 +21,13 @@ describe("landing page", () => {
 
 describe("date of birth", () => {
   it("displays dob page", () => {
-    cy.visit("http://localhost:3000/date-of-birth.html");
+    cy.visit("http://localhost:3000/date-of-birth");
     cy.contains("What is your date of birth?");
     cy.contains("Month");
   });
 
   it("Continue button is a clickable link", () => {
-    cy.visit("http://localhost:3000/date-of-birth.html");
+    cy.visit("http://localhost:3000/date-of-birth");
     cy.contains("Continue").click();
     cy.url().should("include", "/email-address.html");
   });

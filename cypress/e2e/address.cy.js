@@ -37,14 +37,14 @@ describe('address page', () => {
         cy.visit('http://localhost:3000/address')
         cy.get('[data-cy="find-address-button"]').click()
         cy.get('[data-cy="submit-address-selection"]').click()
-        cy.url().should('include', '/date-of-birth.html')
+        cy.url().should('include', '/date-of-birth')
     })
     it('clicking continue on manual address entry page links to date of birth page', () => {
         cy.visit('http://localhost:3000/address')
         cy.get('[data-cy="find-address-button"]').click()
         cy.get('[data-cy="cannot-find-address"]').click()
         cy.get('[data-cy="submit-manual-address"]').click()
-        cy.url().should('include', '/date-of-birth.html')
+        cy.url().should('include', '/date-of-birth')
     })
     it('back button goes to name page when clicked on initial tab', () => {
         cy.visit('http://localhost:3000/address')
