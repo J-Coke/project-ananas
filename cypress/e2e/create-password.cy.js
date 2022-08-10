@@ -41,7 +41,13 @@ describe("create password page", () => {
   it("show an error if the password is less than 8 characters", () => {
     cy.get('[data-cy="password-input"]').type("pass");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.contains("Enter a password with a minimum of 8 characters");
+    cy.get('[data-cy="password-error"]').contains(
+      "Password must be 8 characters or more"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
+      "Password must be 8 characters or more"
+    );
     cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
@@ -53,6 +59,11 @@ describe("create password page", () => {
       "rgb(212, 53, 28)"
     );
     cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-error-summary"]').should(
       "have.css",
       "border-color",
       "rgb(212, 53, 28)"
@@ -67,7 +78,11 @@ describe("create password page", () => {
   it("shows error if password doesn't contain at least one number and special character", () => {
     cy.get('[data-cy="password-input"]').type("password");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.contains(
+    cy.get('[data-cy="password-error"]').contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
       "Enter a password with at least one number and one special character"
     );
     cy.get('[data-cy="password-error"]').should(
@@ -81,6 +96,11 @@ describe("create password page", () => {
       "rgb(212, 53, 28)"
     );
     cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-error-summary"]').should(
       "have.css",
       "border-color",
       "rgb(212, 53, 28)"
@@ -95,7 +115,11 @@ describe("create password page", () => {
   it("shows error if password doesn't contain at least one number", () => {
     cy.get('[data-cy="password-input"]').type("password@");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.contains(
+    cy.get('[data-cy="password-error"]').contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
       "Enter a password with at least one number and one special character"
     );
     cy.get('[data-cy="password-error"]').should(
@@ -109,6 +133,11 @@ describe("create password page", () => {
       "rgb(212, 53, 28)"
     );
     cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-error-summary"]').should(
       "have.css",
       "border-color",
       "rgb(212, 53, 28)"
@@ -123,7 +152,11 @@ describe("create password page", () => {
   it("shows error if password doesn't contain at least one special character", () => {
     cy.get('[data-cy="password-input"]').type("password1");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.contains(
+    cy.get('[data-cy="password-error"]').contains(
+      "Enter a password with at least one number and one special character"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
       "Enter a password with at least one number and one special character"
     );
     cy.get('[data-cy="password-error"]').should(
@@ -137,6 +170,11 @@ describe("create password page", () => {
       "rgb(212, 53, 28)"
     );
     cy.get('[data-cy="confirm-password-input"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
+    cy.get('[data-cy="password-error-summary"]').should(
       "have.css",
       "border-color",
       "rgb(212, 53, 28)"
@@ -152,7 +190,13 @@ describe("create password page", () => {
     cy.get('[data-cy="password-input"]').type("Type!1day");
     cy.get('[data-cy="confirm-password-input"]').type("Type!t2tt");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.contains("Both passwords should match");
+    cy.get('[data-cy="password-error"]').contains(
+      "Both passwords should match"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
+      "Both passwords should match"
+    );
     cy.get('[data-cy="password-error"]').should(
       "have.css",
       "color",
@@ -168,6 +212,11 @@ describe("create password page", () => {
       "border-color",
       "rgb(212, 53, 28)"
     );
+    cy.get('[data-cy="password-error-summary"]').should(
+      "have.css",
+      "border-color",
+      "rgb(212, 53, 28)"
+    );
     cy.get('[data-cy="password-input"]').should(
       "have.attr",
       "aria-describedby",
@@ -179,6 +228,27 @@ describe("create password page", () => {
     cy.get('[data-cy="password-input"]').type("Type!1day");
     cy.get('[data-cy="confirm-password-input"]').type("Type!1day");
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
-    cy.url().should("eq", "http://localhost:3000/create-password/#");
+    cy.url().should("eq", "http://localhost:3000/document-list");
+  });
+
+  it("shows an error when password isn't accepted but accepts after next attempt meets requirements", () => {
+    cy.get('[data-cy="password-input"]').type("Type!1day");
+    cy.get('[data-cy="confirm-password-input"]').type("Type!t2tt");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.get('[data-cy="password-error"]').contains(
+      "Both passwords should match"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains("There is a problem");
+    cy.get('[data-cy="password-error-summary"]').contains(
+      "Both passwords should match"
+    );
+    cy.get('[data-cy="password-error-summary"]').contains(
+      "Both passwords should match"
+    );
+
+    cy.get('[data-cy="password-input"]').clear().type("Type!1day");
+    cy.get('[data-cy="confirm-password-input"]').clear().type("Type!1day");
+    cy.get('[data-cy="continue-button"]').contains("Continue").click();
+    cy.url().should("eq", "http://localhost:3000/document-list");
   });
 });

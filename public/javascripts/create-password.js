@@ -4,6 +4,7 @@ const formGroup = document.querySelector(".govuk-form-group");
 const passwordInput = document.querySelector("#password");
 const confirmPasswordInput = document.querySelector("#confirm-password");
 const errorTextSection = document.querySelector("#error");
+const errorSummarySection = document.querySelector("#error-summary");
 
 continueEvent.addEventListener("click", checkPassword);
 
@@ -32,7 +33,7 @@ function showError(errorType) {
   addAriaAttribute(passwordInput, confirmPasswordInput);
 
   if (errorType === "length") {
-    errorMessage = "Enter a password with a minimum of 8 characters";
+    errorMessage = "Password must be 8 characters or more";
   } else if (errorType === "characters") {
     errorMessage =
       "Enter a password with at least one number and one special character";
@@ -42,9 +43,22 @@ function showError(errorType) {
     return;
   }
 
-  errorTextSection.outerHTML = `<p id="password-error" class="govuk-error-message" data-cy="password-error">
+  errorTextSection.innerHTML = `<p id="password-error" class="govuk-error-message" data-cy="password-error">
     <span class="govuk-visually-hidden">Error:</span> ${errorMessage}
     </p>`;
+
+  errorSummarySection.innerHTML = `<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" data-cy="password-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#password">${errorMessage}</a>
+      </li>
+    </ul>
+  </div>
+</div>`;
 }
 
 function checkPassword(event) {
@@ -56,6 +70,6 @@ function checkPassword(event) {
   } else if (passwordInput.value !== confirmPasswordInput.value) {
     showError("unmatched");
   } else {
-    location.href = "#";
+    location.href = "/document-list";
   }
 }
