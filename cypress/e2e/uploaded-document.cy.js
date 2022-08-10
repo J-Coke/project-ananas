@@ -18,7 +18,7 @@ describe("name page", () => {
   
       it("links to the right page", () => {
         cy.get("@button").click();
-        cy.url().should("include", "/registration-list");
+        cy.url().should("include", "#");
       });
     });
   
