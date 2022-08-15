@@ -124,6 +124,7 @@
         <a href="/email-address" class="govuk-back-link" data-cy="back-link"
           >Back</a
         >
+
         <span id="error-summary"></span>
 
         <form
@@ -135,7 +136,7 @@
           id="account-password"
         >
           <div id="password-fields">
-            <div class="govuk-form-group">
+            <div class="govuk-form-group password-form-group">
               <h1 class="govuk-label-wrapper" data-cy="section-heading-h1">
                 <label class="govuk-label govuk-label--l" for="password">
                   Create a password for your account
@@ -147,19 +148,19 @@
               </div>
               <span id="error"></span>
               <input
-                class="govuk-input govuk-input--width-20 password"
+                class="govuk-input govuk-input--width-20"
                 id="password"
                 name="password"
                 type="password"
                 data-cy="password-input"
               />
-              <br />
-              <br />
+            </div>
+            <div class="govuk-form-group confirm-password-form-group">
               <label class="govuk-label" for="confirm-password"
                 >Confirm password</label
               >
               <input
-                class="govuk-input govuk-input--width-20 confirm-password"
+                class="govuk-input govuk-input--width-20"
                 id="confirm-password"
                 name="confirm-password"
                 type="password"

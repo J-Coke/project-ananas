@@ -329,4 +329,41 @@ describe("create password page", () => {
     cy.get('[data-cy="continue-button"]').contains("Continue").click();
     cy.url().should("eq", "http://localhost:3000/document-list");
   });
+
+  context("enter is pressed on keyboard", () => {
+    it("shows an error when password is only typed on first input", () => {
+      cy.get('[data-cy="password-input"]').clear().type("Type{enter}");
+      cy.get('[data-cy="password-error"]').contains(
+        "Password must be 8 characters or more"
+      );
+      cy.get('[data-cy="password-error"]').should(
+        "have.css",
+        "color",
+        "rgb(212, 53, 28)"
+      );
+    });
+
+    it("shows an error when password typed on both inputs but incorrect requirements", () => {
+      cy.get('[data-cy="password-input"]').clear().type("Typesadas2^");
+      cy.get('[data-cy="confirm-password-input"]')
+        .clear()
+        .type("Type!1day{enter}");
+      cy.get('[data-cy="password-error"]').contains(
+        "Both passwords should match"
+      );
+      cy.get('[data-cy="password-error"]').should(
+        "have.css",
+        "color",
+        "rgb(212, 53, 28)"
+      );
+    });
+
+    it("moves to next page when pressing enter after matching passwords are typed", () => {
+      cy.get('[data-cy="password-input"]').clear().type("Type!1day");
+      cy.get('[data-cy="confirm-password-input"]')
+        .clear()
+        .type("Type!1day{enter}");
+      cy.url().should("eq", "http://localhost:3000/document-list");
+    });
+  });
 });

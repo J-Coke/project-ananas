@@ -1,18 +1,21 @@
-const continueEvent = document.querySelector("#continue-button");
+const continueButtonClick = document.querySelector("#continue-button");
 const passwordFields = document.querySelector("#password-fields");
-const formGroup = document.querySelector(".govuk-form-group");
-const passwordInput = document.querySelector("#password");
-const confirmPasswordInput = document.querySelector("#confirm-password");
-const errorTextSection = document.querySelector("#error");
-const errorSummarySection = document.querySelector("#error-summary");
-
-continueEvent.addEventListener("click", checkPassword);
+const passwordFormGroup = document.querySelector(".password-form-group");
+const confirmPasswordFormGroup = document.querySelector(
+  ".confirm-password-form-group"
+);
 
 let passwordMinimumLength = 8;
 let passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/;
 
-function addErrorClasses(formGroup, passwordInput, confirmPasswordInput) {
-  formGroup.classList.add("govuk-form-group--error");
+function addErrorClasses(
+  passwordFormGroup,
+  confirmPasswordFormGroup,
+  passwordInput,
+  confirmPasswordInput
+) {
+  passwordFormGroup.classList.add("govuk-form-group--error");
+  confirmPasswordFormGroup.classList.add("govuk-form-group--error");
   passwordInput.classList.add("govuk-input--error");
   confirmPasswordInput.classList.add("govuk-input--error");
 }
@@ -28,8 +31,16 @@ function addAriaAttribute(passwordInput, confirmPasswordInput) {
   );
 }
 
+const errorTextSection = document.querySelector("#error");
+const errorSummarySection = document.querySelector("#error-summary");
+
 function showError(errorType) {
-  addErrorClasses(formGroup, passwordInput, confirmPasswordInput);
+  addErrorClasses(
+    passwordFormGroup,
+    confirmPasswordFormGroup,
+    passwordInput,
+    confirmPasswordInput
+  );
   addAriaAttribute(passwordInput, confirmPasswordInput);
 
   if (errorType === "length") {
@@ -61,6 +72,9 @@ function showError(errorType) {
 </div>`;
 }
 
+const passwordInput = document.querySelector("#password");
+const confirmPasswordInput = document.querySelector("#confirm-password");
+
 function checkPassword(event) {
   event.preventDefault();
   if (passwordInput.value.length < passwordMinimumLength) {
@@ -73,3 +87,13 @@ function checkPassword(event) {
     location.href = "/document-list";
   }
 }
+
+function checkEnterKeyPressed(event) {
+  if (event.key === "Enter") {
+    checkPassword(event);
+  }
+}
+
+continueButtonClick.addEventListener("click", checkPassword);
+passwordInput.addEventListener("keypress", checkEnterKeyPressed);
+confirmPasswordInput.addEventListener("keypress", checkEnterKeyPressed);
